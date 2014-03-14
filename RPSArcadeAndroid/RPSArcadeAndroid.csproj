@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1C9809E-34BE-42FC-B1A9-BD1AA2150247}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RPSArcadeAndroid</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>RPSArcadeAndroid</AssemblyName>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>__MOBILE__;__ANDROID__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="OpenTK" />
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\android\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\android\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\android\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth.Android">
+      <HintPath>..\Components\azure-mobile-services-1.1.0\lib\android\Xamarin.Auth.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\Framework\v4.0.30319\System.Net.Http.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPSArcadeGame.cs" />
+    <Compile Include="Hands\Hand.cs" />
+    <Compile Include="Hands\HandFactory.cs" />
+    <Compile Include="Utility\Resolution.cs" />
+    <Compile Include="Hands\Enums\HandState.cs" />
+    <Compile Include="Hands\Enums\HandType.cs" />
+    <Compile Include="Exceptions\NotInitializedException.cs" />
+    <Compile Include="GameControl.cs" />
+    <Compile Include="Hands\Enums\Direction.cs" />
+    <Compile Include="Hands\MatchResult.cs" />
+    <Compile Include="Hands\Animation.cs" />
+    <Compile Include="Hands\FrameMatrix.cs" />
+    <Compile Include="Hands\Enums\PlayerType.cs" />
+    <Compile Include="Hands\Movement.cs" />
+    <Compile Include="Hands\Enums\ResultType.cs" />
+    <Compile Include="Difficulty\ControllerFactory.cs" />
+    <Compile Include="Difficulty\DifficultyController.cs" />
+    <Compile Include="Difficulty\Enums\LevelTypes.cs" />
+    <Compile Include="Difficulty\HandTypeController.cs" />
+    <Compile Include="Difficulty\SpeedController.cs" />
+    <Compile Include="Utility\InputManager.cs" />
+    <Compile Include="Screens\GameScreen.cs" />
+    <Compile Include="Screens\BackgroundScreen.cs" />
+    <Compile Include="Screens\HandScreen.cs" />
+    <Compile Include="Screens\HUDScreen.cs" />
+    <Compile Include="Screens\IGameScreen.cs" />
+    <Compile Include="Screens\ActionBarScreen.cs" />
+    <Compile Include="Screens\Enums\GamePlayState.cs" />
+    <Compile Include="Screens\GamePlayManager.cs" />
+    <Compile Include="Screens\ScreenManager.cs" />
+    <Compile Include="Screens\Enums\Timing.cs" />
+    <Compile Include="Screens\MenuScreen.cs" />
+    <Compile Include="Screens\LoadingScreen.cs" />
+    <Compile Include="Utility\MyLogger.cs" />
+    <Compile Include="GameActivity.cs" />
+    <Compile Include="Screens\LeaderboardScreen.cs" />
+    <Compile Include="DB\UserAccount.cs" />
+    <Compile Include="DB\UserScore.cs" />
+    <Compile Include="Screens\GameFlowManager.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="LoginActivity.cs" />
+    <Compile Include="DB\AzureDB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Splash.png" />
+    <AndroidResource Include="Resources\values\Styles.xml" />
+    <AndroidResource Include="Resources\layout\LoginLayout.axml" />
+    <AndroidResource Include="Resources\drawable\RPSLogo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Assets\Content\" />
+    <Folder Include="Assets\Content\Textures\" />
+    <Folder Include="Hands\" />
+    <Folder Include="Utility\" />
+    <Folder Include="Assets\Content\Fonts\" />
+    <Folder Include="Hands\Enums\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Difficulty\" />
+    <Folder Include="Difficulty\Enums\" />
+    <Folder Include="Screens\" />
+    <Folder Include="Screens\Enums\" />
+    <Folder Include="Resources\layout\" />
+    <Folder Include="DB\" />
+    <Folder Include="Assets\Content\Songs\" />
+    <Folder Include="Assets\Content\SoundFX\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
+      <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
+      <Name>MonoGame.Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
+      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
+      <Name>Lidgren.Network.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AdMob\AdMob\AdMob.csproj">
+      <Project>{74B48A13-31DC-40C1-958F-F2979FD0C59D}</Project>
+      <Name>AdMob</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\Fonts\motorWerkFont.xnb" />
+    <AndroidAsset Include="Assets\Content\Fonts\motorWerkFontSmall.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\animatedPaper.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\animatedRock.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\animatedScissors.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\background.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\collisionBar.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\collisionBarInner.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\hudBar.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\levelBackground.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\paper.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\progressBar.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\rock.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\scissors.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\settingsIcon.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\userActionBar.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Textures\userPaper.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\userPaperPressed.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\userRock.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\userRockPressed.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\userScissors.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\userScissorsPressed.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\whiteProgressBar.xnb" />
+    <AndroidAsset Include="Assets\Content\Textures\leaderboard.xnb" />
+    <AndroidAsset Include="Assets\Content\SoundFX\hit1.mp3" />
+    <AndroidAsset Include="Assets\Content\SoundFX\hit2.mp3" />
+    <AndroidAsset Include="Assets\Content\SoundFX\hit3.mp3" />
+    <AndroidAsset Include="Assets\Content\Songs\Aurea Carmina.mp3" />
+    <AndroidAsset Include="Assets\Content\Songs\Electrodoodle.mp3" />
+    <AndroidAsset Include="Assets\Content\Songs\Killing Time.mp3" />
+    <AndroidAsset Include="Assets\Content\Songs\marimbaLoop.mp3" />
+    <AndroidAsset Include="Assets\Content\Songs\MTA.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="azure-mobile-services">
+      <Version>1.1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:baselineAligned="true"
+        android:background="#ffefffad"
+        android:fadingEdge="none">
+        <com.google.ads.AdView
+            android:id="@+id/ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adUnitId="ca-app-pub-3805641000844271/9009097745"
+            ads:adSize="BANNER"
+            android:layout_gravity="center" />
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="197.8dp"
+            android:id="@+id/logoImageView"
+            android:layout_marginTop="15.4dp"
+            android:layout_marginBottom="25.7dp" />
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="52.7dp"
+            android:id="@+id/relativeLayout1">
+            <EditText
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/userIdTextField"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:hint="User Name"
+                android:layout_marginTop="0dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="52.7dp"
+            android:id="@+id/relativeLayout2">
+            <EditText
+                android:inputType="textPassword"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordTextField"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:hint="Password"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="77.3dp"
+            android:id="@+id/relativeLayout3">
+            <Button
+                android:text="Login/ Create New User"
+                android:layout_width="262.3dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/loginButton"
+                android:background="#ffc75620"
+                android:layout_marginBottom="0dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:ellipsize="none"
+                android:minWidth="20dp"
+                android:minHeight=" 260dp"
+                android:layout_marginTop="13.7dp"
+                android:textSize="20dp"
+                android:textColor="#ffffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
