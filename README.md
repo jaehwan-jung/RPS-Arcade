@@ -12,7 +12,8 @@ Computer Engineering - Software Option, 4th Year</h3>
 <li>Only tested on Android emulators. Not tested on real device because I don't have one.</li>
 <li>I haven't refactored any of the code properly because this game was developed as a practice.</li>
 <li>I will probably never improve this code/game.</li>
-<li>I am aware of the quality of my code ... No proper architecture, not enough abstraction, not enough loose coupling, not enough high cohesion, you name it...this code is messy</li>
+<li>I am aware of the quality of my code ... No proper architecture, not enough abstraction, not enough loose coupling, not enough high cohesion, you name it...this code is messy<br>
+It was my intention to spend the reasonable small amount of time on this project.</li>
 <li>Feel free to use my code but I assume no responsibility for errors, omissions, damages, etc.</li>
 </ul>
 <h2>Tools</h2>
@@ -47,6 +48,12 @@ The tools I played with while developing this game are:
 	<li>GIMP
 		<ul>
 		<li>Image Manipulation Program</li>
+		</ul>
+	</li>
+	<li>GenyMotion
+		<ul>
+		<li>3rd Party Android Emulator</li>
+		<li>Super Fast. 100% Recommended.</li>
 		</ul>
 	</li>
 </ul>
