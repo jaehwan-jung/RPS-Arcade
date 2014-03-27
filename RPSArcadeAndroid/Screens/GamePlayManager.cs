@@ -205,13 +205,13 @@ namespace RPSArcadeAndroid
 				break;
 			case ResultType.Draw:
 			case ResultType.Defeat:
-			case ResultType.WrongTiming:	
-				//RefreshAd ();
+			case ResultType.WrongTiming:					
 				PauseWhileShowingScores ();
 				loadingOn = true;				
 				await PublishScore ();			
 				await ShowLeaderboard ();
-				//ShowFullAd ();
+				ShowFullAd ();
+				RefreshAd ();
 				loadingOn = false;
 				break;
 			default:

@@ -111,7 +111,7 @@ namespace RPSArcadeAndroid
 		{
 			// For Mobile devices, this logic will close the Game when the Back button is pressed
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
-				this.Exit ();
+				System.Environment.Exit (0);
 			}
 		}
 

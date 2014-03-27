@@ -8,8 +8,7 @@
 // Jae-Hwan Jung															   //
 // Copyright (C) 2014 Jae-Hwan Jung. All rights reserved.					   //
 //-----------------------------------------------------------------------------//
-using Android.Content.PM;
-using Android.Util;
+using Android.Net;
 
 #endregion
 #region Using Statements
@@ -19,6 +18,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Android.Content.PM;
+using Android.Util;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -34,6 +35,7 @@ namespace RPSArcadeAndroid
 		Icon = "@drawable/rPSLogo",
 		Label = "RPS Arcade", 
 		Theme = "@android:style/Theme.NoTitleBar", 
+		LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
 		NoHistory = true,
 		MainLauncher = true,
 		ScreenOrientation = ScreenOrientation.Portrait,
@@ -49,8 +51,8 @@ namespace RPSArcadeAndroid
 		private EditText idField;
 		private EditText passwordField;
 		private ProgressDialog progressDialog;
-		private AdView adView;
 		private ImageView logoImageView;
+		private ConnectivityManager connectivityManager;
 
 		#endregion
 
@@ -60,8 +62,19 @@ namespace RPSArcadeAndroid
 		{
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.LoginLayout);
-			InitializeWidgets ();
-			InitializeAd ();
+			InitializeWidgets ();			
+		}
+
+		private bool IsNetworkConnected ()
+		{
+			if (connectivityManager == null)
+				connectivityManager = (ConnectivityManager)GetSystemService (ConnectivityService);
+			
+			var activeConnection = connectivityManager.ActiveNetworkInfo;
+			if ((activeConnection != null) && activeConnection.IsConnected)
+				return true;
+			else
+				return false;
 		}
 
 		private void InitializeWidgets ()
@@ -85,21 +98,25 @@ namespace RPSArcadeAndroid
 
 		private void OnLoginClicked (object sender, EventArgs e)
 		{
-			string errorMessage = string.Empty;
-			var id = idField.Text;
-			var isIdValid = IsIdValid (id);
-			if (!isIdValid)
-				errorMessage += string.Format ("Invalid Id. Use only letters. No Space. Max 12 Chars.{0}", System.Environment.NewLine);
+			if (IsNetworkConnected ()) {			
+				string errorMessage = string.Empty;
+				var id = idField.Text;
+				var isIdValid = IsIdValid (id);
+				if (!isIdValid)
+					errorMessage += string.Format ("Invalid Id. Use only letters. No Space. Max 12 Chars.{0}", System.Environment.NewLine);
 				
-			var pw = passwordField.Text;
-			var isPasswordValid = IsPasswordValid (pw);
-			if (!isPasswordValid)
-				errorMessage += string.Format ("Invalid Password. Max 12 Characters."); 
+				var pw = passwordField.Text;
+				var isPasswordValid = IsPasswordValid (pw);
+				if (!isPasswordValid)
+					errorMessage += string.Format ("Invalid Password. Max 12 Characters."); 
 			
-			if (isIdValid && isPasswordValid)
-				Login (id, pw);
-			else
-				NotifyViaToast (errorMessage);
+				if (isIdValid && isPasswordValid)
+					Login (id, pw);
+				else
+					NotifyViaToast (errorMessage);
+			} else {
+				NotifyViaToast ("Please connect to Internet and try again");
+			}
 		}
 
 		private bool IsIdValid (string txt)
@@ -182,34 +199,6 @@ namespace RPSArcadeAndroid
 		{
 			var intent = new Intent (this, typeof(GameActivity)); 
 			StartActivity (intent);
-		}
-
-		private void InitializeAd ()
-		{
-			adView = FindViewById<AdView> (Resource.Id.ad);
-			
-			AdRequest adRequest = new AdRequest ();
-			#if DEBUG
-			adRequest.SetTesting (true);
-			adRequest.AddTestDevice (AdRequest.TestEmulator);
-			// If you're trying to show ads on device, use this.
-			// The device ID to test will be shown on adb log.
-			// adRequest.AddTestDevice (some_device_id);
-			#endif
-			adView.LoadAd (adRequest);
-		}
-
-		#endregion
-
-		#region OnDestroy
-
-		protected override void OnDestroy ()
-		{
-			if (adView != null) {
-				adView.RemoveAllViews ();
-				adView.Destroy ();
-			}
-			base.OnDestroy ();
 		}
 
 		#endregion

@@ -7,10 +7,12 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
 using Android.Util;
+using System.Linq;
 
 #endregion
 namespace RPSArcadeAndroid
 {
+	[Android.Runtime.Preserve (AllMembers = true)]
 	public static class AzureDB
 	{
 		#region Fields

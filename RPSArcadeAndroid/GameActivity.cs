@@ -8,7 +8,7 @@
 // Jae-Hwan Jung															   //
 // Copyright (C) 2014 Jae-Hwan Jung. All rights reserved.					   //
 //-----------------------------------------------------------------------------//
-
+using Android.Util;
 
 #endregion
 #region Using Statements
@@ -40,9 +40,11 @@ namespace RPSArcadeAndroid
 		#region Fields
 
 		private static AdView adView;
+		private static RPSArcadeGame currentGame;
 
 		#endregion
 
+		public static bool FullAdOn;
 		static InterstitialAd interstitialAd;
 
 		public static float AdBannerHeight {
@@ -56,37 +58,32 @@ namespace RPSArcadeAndroid
 			try {
 				base.OnCreate (bundle);
 				RPSArcadeGame.Activity = this;
-				var game = new RPSArcadeGame ();
+				currentGame = new RPSArcadeGame ();
 				FrameLayout fl = new FrameLayout (this);
 				LinearLayout ll = new LinearLayout (this);
 				ll.Orientation = Orientation.Vertical;
 				ll.SetGravity (GravityFlags.Top);
-				fl.AddView (game.Window);
+				fl.AddView (currentGame.Window);
 				adView = new AdView (this, AdSize.Banner, "ca-app-pub-3805641000844271/9009097745");
 				ll.AddView (adView);
 				fl.AddView (ll);
 				SetContentView (fl);
 				AdRequest adRequest = new AdRequest ();
 				#if DEBUG
-			adRequest.SetTesting (true);
-			adRequest.AddTestDevice (AdRequest.TestEmulator);
-			// If you're trying to show ads on device, use this.
-			// The device ID to test will be shown on adb log.
-			// adRequest.AddTestDevice (some_device_id);
+				adRequest.SetTesting (true);
+				adRequest.AddTestDevice (AdRequest.TestEmulator);			
 				#endif
 				adView.LoadAd (adRequest);			
-				game.Run ();
+				currentGame.Run ();
 			
 				interstitialAd = new InterstitialAd (this, "ca-app-pub-3805641000844271/7877114945");
 				AdRequest adRequest2 = new AdRequest ();
 				#if DEBUG
-			adRequest2.SetTesting (true);
-			adRequest2.AddTestDevice (AdRequest.TestEmulator);
-			// If you're trying to show ads on device, use this.
-			// The device ID to test will be shown on adb log.
-			// adRequest.AddTestDevice (some_device_id);
+				adRequest2.SetTesting (true);
+				adRequest2.AddTestDevice (AdRequest.TestEmulator);			
 				#endif
 				interstitialAd.LoadAd (adRequest2);
+				interstitialAd.DismissScreen += (sender, e) => FullAdOn = false;
 			} catch (Exception e) {
 				NotifyViaToast (e.Message);
 			}
@@ -94,26 +91,21 @@ namespace RPSArcadeAndroid
 
 		#endregion
 
-		public override void OnBackPressed ()
-		{			
-			MediaPlayer.Pause ();
-			if (GameControl.IsPlaying)
-				GameControl.Pause ();
-			base.OnBackPressed ();
-		}
-
 		protected override void OnStop ()
 		{
-			MediaPlayer.Pause ();
-			if (GameControl.IsPlaying)
-				GameControl.Pause ();
-			base.OnStop ();
+			Log.Info ("OnStop", "" + FullAdOn);
+			if (FullAdOn)
+				base.OnStop ();
+			else
+				System.Environment.Exit (0);
 		}
 
 		public static void ShowFullAd ()
 		{
-			if (interstitialAd != null && interstitialAd.IsReady)
-				interstitialAd.Show ();
+			if (interstitialAd != null && interstitialAd.IsReady) {
+				FullAdOn = true;
+				interstitialAd.Show ();				
+			}
 		}
 
 		public static void RefreshFullAd ()
@@ -123,9 +115,6 @@ namespace RPSArcadeAndroid
 				#if DEBUG
 				adRequest2.SetTesting (true);
 				adRequest2.AddTestDevice (AdRequest.TestEmulator);
-				// If you're trying to show ads on device, use this.
-				// The device ID to test will be shown on adb log.
-				// adRequest.AddTestDevice (some_device_id);
 				#endif
 				interstitialAd.LoadAd (adRequest2);
 			}

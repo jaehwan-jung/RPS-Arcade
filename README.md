@@ -7,6 +7,13 @@ Computer Engineering - Software Option, 4th Year</h3>
 <p>A simple rock paper scissors game for <b>Android</b>. Rock, paper, scissors will keep falling down from the top of the screen. When they reach the collision bar at the bottom of the screen, the user has to hit the correct counter hand at the right timing.</p>
 <p>The difficulty of the game increases as time elapses.</p>
 <p>Created for fun to play with various tools so that I can properly build my first game that I intend to spend some time on.</p>
+<h2>Q & A</h2>
+<p>Q: How long this has taken?<br>
+A: During the week for my spring break. So less than a week for a few hours a day.</p>
+<p>Q: Why is there no logging?<br>
+A: This was just for fun and was simple enough that logging was simply unnecessary. Also, I am not planning to do any additional work on this game in future.</p>
+<p>Q: Why is there no testing?<br>
+A: Same reason as above.</p>
 <h2>Warning</h2>
 <ul>
 <li>Only tested on Android emulators. Not tested on real device because I don't have one.</li>

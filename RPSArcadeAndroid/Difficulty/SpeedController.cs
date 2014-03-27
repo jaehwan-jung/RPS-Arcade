@@ -28,7 +28,7 @@ namespace RPSArcadeAndroid
 		public const int DEFAULT_SPEED = 100;
 		public const int DEFAULT_SPEED_LIMIT = 1600;
 		public const double DELTA_INTERVAL = 0.1;
-		public const int DELTA_SPEED = 2;
+		public const int DELTA_SPEED = 15;
 
 		#endregion
 
