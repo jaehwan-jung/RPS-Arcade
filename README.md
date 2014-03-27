@@ -8,8 +8,8 @@ Computer Engineering - Software Option, 4th Year</h3>
 <p>The difficulty of the game increases as time elapses.</p>
 <p>Created for fun to play with various tools so that I can properly build my first game that I intend to spend some time on.</p>
 <h2>Q & A</h2>
-<p>Q: How long this has taken?<br>
-A: During the week for my spring break. So less than a week for a few hours a day.</p>
+<p>Q: How long did it take?<br>
+A: During the week of my spring break. So less than a week for a few hours a day.</p>
 <p>Q: Why is there no logging?<br>
 A: This was just for fun and was simple enough that logging was simply unnecessary. Also, I am not planning to do any additional work on this game in future.</p>
 <p>Q: Why is there no testing?<br>
