@@ -73,8 +73,7 @@ namespace RPSArcadeAndroid
 				adRequest.SetTesting (true);
 				adRequest.AddTestDevice (AdRequest.TestEmulator);			
 				#endif
-				adView.LoadAd (adRequest);			
-				currentGame.Run ();
+				adView.LoadAd (adRequest);							
 			
 				interstitialAd = new InterstitialAd (this, "ca-app-pub-3805641000844271/7877114945");
 				AdRequest adRequest2 = new AdRequest ();
@@ -84,6 +83,8 @@ namespace RPSArcadeAndroid
 				#endif
 				interstitialAd.LoadAd (adRequest2);
 				interstitialAd.DismissScreen += (sender, e) => FullAdOn = false;
+				
+				currentGame.Run ();
 			} catch (Exception e) {
 				NotifyViaToast (e.Message);
 			}
